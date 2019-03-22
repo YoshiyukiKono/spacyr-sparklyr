@@ -15,9 +15,9 @@ library(janeaustenr)
 
 config <- spark_config()
 
-config$sparklyr.driver.memory <- "8G"
-config$sparklyr.executor.memory <- "8G"
-config$spark.yarn.executor.memoryOverhead <- "4g"
+##config$sparklyr.driver.memory <- "8G"
+##config$sparklyr.executor.memory <- "8G"
+##config$spark.yarn.executor.memoryOverhead <- "4g"
 
 #### Configuration for spark_apply()
 config[["spark.r.command"]] <- "./r_env.zip/r_env/bin/Rscript"
