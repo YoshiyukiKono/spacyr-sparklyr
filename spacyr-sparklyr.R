@@ -15,9 +15,12 @@ library(janeaustenr)
 
 config <- spark_config()
 
-##config$sparklyr.driver.memory <- "8G"
-##config$sparklyr.executor.memory <- "8G"
-##config$spark.yarn.executor.memoryOverhead <- "4g"
+config$sparklyr.driver.memory <- "8G"
+config$sparklyr.executor.memory <- "8G"
+config$spark.yarn.executor.memoryOverhead <- "4g"
+#config$sparklyr.driver.memory <- "4G"
+#config$sparklyr.executor.memory <- "4G"
+#config$spark.yarn.executor.memoryOverhead <- "2g"
 
 #### Configuration for spark_apply()
 config[["spark.r.command"]] <- "./r_env.zip/r_env/bin/Rscript"
@@ -28,6 +31,8 @@ config$sparklyr.apply.env.R_SHARE_DIR <- "./r_env.zip/r_env/lib/R/share"
 config$sparklyr.apply.env.R_INCLUDE_DIR <- "./r_env.zip/r_env/lib/R/include"
 config$sparklyr.apply.env.LD_LIBRARY_PATH <- "/opt/cloudera/parcels/Anaconda/lib"
 config$sparklyr.apply.env.PYTHONPATH <- "./r_env.zip/r_env/lib/python2.7/site-packages/"
+# Spacyr checkes if Python exits using "which/where" command, so PATH is needed even when using the full path.
+config$sparklyr.apply.env.PATH <- "/opt/cloudera/parcels/Anaconda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/centos/.local/bin:/home/centos/bin"
 
 #### Connect spark
 sc <- spark_connect(master = "yarn-client", config = config)
@@ -52,7 +57,8 @@ entities <- austen_tbl %>%
     function(e) 
     {
       lapply(e, function(k) {
-          spacyr::spacy_initialize(python_executable="/opt/cloudera/parcels/Anaconda/bin/python")
+          spacyr::spacy_initialize()
+          ##spacyr::spacy_initialize(python_executable="/opt/cloudera/parcels/Anaconda/bin/python")
           parsedtxt <- spacyr::spacy_parse(as.character(k), lemma = FALSE)
           spacyr::entity_extract(parsedtxt)
         }

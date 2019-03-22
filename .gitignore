@@ -11,3 +11,4 @@ r_env
 r_env.zip
 .oracle_jre_usage/
 *~
+.viminfo
