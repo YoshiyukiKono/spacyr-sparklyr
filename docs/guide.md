@@ -26,6 +26,8 @@ Worker: t2.2xlarge - vCPU 8, RAM 32G
 
 ### Configuration
 
+
+Error Log
 ```
 ExecutorLostFailure (executor 2 exited caused by one of the running tasks) Reason: Container killed by YARN for exceeding memory limits.  9.4 GB of 9 GB physical memory used. Consider boosting spark.yarn.executor.memoryOverhead or disabling yarn.nodemanager.vmem-check-enabled because of YARN-4714.
 ```
