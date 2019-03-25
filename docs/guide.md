@@ -40,3 +40,14 @@ yarn-site.xml
 https://issues.apache.org/jira/browse/YARN-4714?page=com.atlassian.jira.plugin.system.issuetabpanels%3Aall-tabpanel
 
 https://hadoop.apache.org/docs/r2.7.7/hadoop-yarn/hadoop-yarn-common/yarn-default.xml
+
+vmem is mentioned in the above log though, I disabled pmem-check reffering to the link below.
+
+https://community.cloudera.com/t5/Batch-Processing-and-Workflow/How-to-set-yarn-nodemanager-pmem-check-enabled/td-p/30134
+
+The following links were found when considering this issue.
+
+https://stackoverflow.com/questions/40781354/container-killed-by-yarn-for-exceeding-memory-limits-10-4-gb-of-10-4-gb-physic
+
+https://mapr.com/blog/best-practices-yarn-resource-management/
+
