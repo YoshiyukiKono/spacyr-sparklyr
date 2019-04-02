@@ -32,12 +32,21 @@ Error Log
 java.lang.IllegalArgumentException: Required executor memory (1024), overhead (8192 MB), and PySpark memory (0 MB) is above the max threshold (4096 MB) of this cluster! Please check the values of 'yarn.scheduler.maximum-allocation-mb' and/or 'yarn.nodemanager.resource.memory-mb'.
 ```
 
-Container Memory 8 -> 12
-yarn.nodemanager.resource.memory-mb
-NODEMANAGER worker Group V5UoNXqr 
+Container Memory
 
-Container Memory Maximum 8->64
+yarn.nodemanager.resource.memory-mb
+
+NODEMANAGER worker Group
+
+8 -> 12GB
+ 
+Container Memory Maximum 
+
 yarn.scheduler.maximum-allocation-mb
+
+REROURCEMANAGER master Group
+
+8 -> 64GB
 
 
 #### Memory Check
@@ -46,7 +55,7 @@ Error Log
 ExecutorLostFailure (executor 2 exited caused by one of the running tasks) Reason: Container killed by YARN for exceeding memory limits.  9.4 GB of 9 GB physical memory used. Consider boosting spark.yarn.executor.memoryOverhead or disabling yarn.nodemanager.vmem-check-enabled because of YARN-4714.
 ```
 
-yarn-site.xml
+NodeManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml
 ```
 <property><name>yarn.nodemanager.pmem-check-enabled</name><value>false</value></property>
 ```
